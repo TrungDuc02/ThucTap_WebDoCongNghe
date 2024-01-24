@@ -95,7 +95,7 @@ if($order->num_rows > 0){
                             echo '<span class="badge badge-success">Đã giao hàng</span>';
 	                    break;
                         case '5':
-                            echo '<span class="badge badge-success">Đã chọn</span>';
+                            echo '<span class="badge badge-success">Đã hủy (admin)</span>';
 	                    break;
                         default:
                             echo '<span class="badge badge-danger">Đã hủy</span>';
@@ -116,7 +116,7 @@ if($order->num_rows > 0){
 </div>
 <?php if(isset($_GET['view'])): ?>
 <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
 </div>
 <style>
     #uni_modal>.modal-dialog>.modal-content>.modal-footer{
@@ -131,7 +131,7 @@ if($order->num_rows > 0){
     $(function(){
         $('#list td,#list th').addClass('py-1 px-2 align-middle')
         $('#update_status').click(function(){
-            uni_modal("Update Status", "./orders/update_status.php?oid=<?php echo $id ?>&status=<?php echo $status ?>")
+            uni_modal("Cập nhật trạng thái", "./orders/update_status.php?oid=<?php echo $id ?>&status=<?php echo $status ?>")
         })
     })
 </script>

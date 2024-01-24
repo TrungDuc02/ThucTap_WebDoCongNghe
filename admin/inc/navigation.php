@@ -22,7 +22,7 @@
                 <div class="clearfix"></div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-4">
-                   <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
+                   <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child- indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item dropdown">
                       <a href="./" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -76,10 +76,11 @@
                       <a href="<?php echo base_url ?>admin/?page=maintenance/category" class="nav-link nav-maintenance_category">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
-                        Danh sách danh mục
+                        Danh sách danh mục (*)
                         </p>
                       </a>
                     </li>
+
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=maintenance/sub_category" class="nav-link nav-maintenance_sub_category">
                         <i class="nav-icon fas fa-th-list"></i>
@@ -88,6 +89,16 @@
                         </p>
                       </a>
                     </li>
+
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=maintenance/account_clients" class="nav-link nav-maintenance_account_clients">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>
+                        Danh sách khách hàng
+                        </p>
+                      </a>
+                    </li>
+
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=system_info" class="nav-link nav-system_info">
                         <i class="nav-icon fas fa-cogs"></i>

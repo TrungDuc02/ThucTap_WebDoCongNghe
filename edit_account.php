@@ -75,12 +75,12 @@ $(function(){
                 dataType:"json",
                 error:err=>{
                     console.log(err)
-                    alert_toast("an error occured",'error')
+                    alert_toast("đã xảy ra lỗi",'error')
                     end_loader()
                 },
                 success:function(resp){
                     if(typeof resp == 'object' && resp.status == 'success'){
-                        alert_toast("Account succesfully updated",'success');
+                        alert_toast("Tài khoản được cập nhật thành công",'success');
                         $('#update_account [name="password"],#update_account [name="cpassword"]').attr('required',false);
                         $('#update_account [name="password"],#update_account [name="cpassword"]').val('');
                     }else if(resp.status == 'failed' && !!resp.msg){
@@ -92,7 +92,7 @@ $(function(){
                         
                     }else{
                         console.log(resp)
-                        alert_toast("an error occured",'error')
+                        alert_toast("đã xảy ra lỗi",'error')
                     }
                     end_loader()
                 }

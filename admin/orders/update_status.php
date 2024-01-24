@@ -7,7 +7,7 @@
                 <option value="0" <?php echo $_GET['status'] == 0 ? "selected" : '' ?>>Chưa giải quyết</option>
                 <option value="1" <?php echo $_GET['status'] == 1 ? "selected" : '' ?>>Đóng gói</option>
                 <option value="2" <?php echo $_GET['status'] == 2 ? "selected" : '' ?>>Đang giao hàng</option>
-                <option value="5" <?php echo $_GET['status'] == 5 ? "selected" : '' ?>>Đã chọn</option>
+                <option value="5" <?php echo $_GET['status'] == 5 ? "selected" : '' ?>>Đã hủy (admin)</option>
                 <option value="3" <?php echo $_GET['status'] == 3 ? "selected" : '' ?>>Đã giao hàng</option>
                 <option value="4" <?php echo $_GET['status'] == 4 ? "selected" : '' ?>>Đã hủy</option>
             </select>

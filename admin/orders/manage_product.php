@@ -177,7 +177,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 dataType: 'json',
 				error:err=>{
 					console.log(err)
-					alert_toast("An error occured",'error');
+					alert_toast("Đã xảy ra lỗi",'error');
 					end_loader();
 				},
 				success:function(resp){
@@ -191,7 +191,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                             $("html, body").animate({ scrollTop: _this.closest('.card').offset().top }, "fast");
                             end_loader()
                     }else{
-						alert_toast("An error occured",'error');
+						alert_toast("Đã xảy ra lỗi",'error');
 						end_loader();
                         console.log(resp)
 					}

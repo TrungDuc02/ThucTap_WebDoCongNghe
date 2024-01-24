@@ -145,7 +145,7 @@
                 dataType:"json",
                 error:err=>{
                     console.log(err)
-                    alert_toast("an error occured",'error')
+                    alert_toast("đã xảy ra lỗi",'error')
                     end_loader()
                 },
                 success:function(resp){
@@ -154,7 +154,7 @@
                         $('#cart-count').text(resp.cart_count)
                     }else{
                         console.log(resp)
-                        alert_toast("an error occured",'error')
+                        alert_toast("đã xảy ra lỗi",'error')
                     }
                     end_loader();
                 }

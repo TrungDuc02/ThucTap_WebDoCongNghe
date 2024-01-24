@@ -189,7 +189,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 dataType: 'json',
 				error:err=>{
 					console.log(err)
-					alert_toast("Vui lòng nhập số lượng và giá tiền cho sản phẩm",'war  ning');
+					alert_toast("Vui lòng nhập số lượng và giá tiền cho sản phẩm",'warning');
 					end_loader();
 				},
 				success:function(resp){

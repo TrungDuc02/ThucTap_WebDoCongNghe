@@ -118,7 +118,7 @@ $(function(){
             dataType:"json",
             error:err=>{
                 console.log(err)
-                alert_toast("an error occured","error")
+                alert_toast("đã xảy ra lỗi","error")
                 end_loader();
             },
             success:function(resp){
@@ -129,7 +129,7 @@ $(function(){
                     },2000)
                 }else{
                     console.log(resp)
-                    alert_toast("an error occured","error")
+                    alert_toast("đã xảy ra lỗi","error")
                     end_loader();
                 }
             }

@@ -16,33 +16,33 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 		<form action="" id="package-form">
 			<input type="hidden" name ="id" value="<?php echo isset($id) ? $id : '' ?>">
 			<div class="form-group">
-				<label for="title" class="control-label">Package Title</label>
+				<label for="title" class="control-label">Tiêu đề gói</label>
                 <textarea name="title" id="" cols="30" rows="2" class="form-control form no-resize"><?php echo isset($title) ? $title : ''; ?></textarea>
 			</div>
             <div class="form-group">
-				<label for="tour_location" class="control-label">Tour Location</label>
+				<label for="tour_location" class="control-label">Địa điểm tham quan</label>
                 <textarea name="tour_location" id="" cols="30" rows="2" class="form-control form no-resize"><?php echo isset($tour_location) ? $tour_location : ''; ?></textarea>
 			</div>
             <div class="form-group">
-				<label for="cost" class="control-label">Price</label>
+				<label for="cost" class="control-label">Giá</label>
                 <input type="number" step="any" class="form form-control" name="cost" value="<?php echo isset($cost) ? $cost : 0; ?>">
 			</div>
             <div class="form-group">
-				<label for="description" class="control-label">Description</label>
+				<label for="description" class="control-label">Giới thiệu</label>
                 <textarea name="description" id="" cols="30" rows="2" class="form-control form no-resize summernote"><?php echo isset($description) ? $description : ''; ?></textarea>
 			</div>
             <div class="form-group">
-				<label for="status" class="control-label">Status</label>
+				<label for="status" class="control-label">Trạng thái</label>
                 <select name="status" id="status" class="custom-select selevt">
-                <option value="1" <?php echo isset($status) && $status == 1 ? 'selected' : '' ?>>Active</option>
-                <option value="0" <?php echo isset($status) && $status == 0 ? 'selected' : '' ?>>Inactive</option>
+                <option value="1" <?php echo isset($status) && $status == 1 ? 'selected' : '' ?>>Hoạt động</option>
+                <option value="0" <?php echo isset($status) && $status == 0 ? 'selected' : '' ?>>Không hoạt động</option>
                 </select>
 			</div>
             <div class="form-group">
-				<label for="" class="control-label">Images</label>
+				<label for="" class="control-label">Ảnh</label>
 				<div class="custom-file">
 	              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="img[]" multiple accept="image/*" onchange="displayImg(this,$(this))">
-	              <label class="custom-file-label" for="customFile">Choose file</label>
+	              <label class="custom-file-label" for="customFile">Chọn tập tin</label>
 	            </div>
 			</div>
             <?php if(isset($upload_path) && is_dir(base_app.$upload_path)): ?>
@@ -65,8 +65,8 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 		</form>
 	</div>
 	<div class="card-footer">
-		<button class="btn btn-flat btn-primary" form="package-form">Save</button>
-		<a class="btn btn-flat btn-default" href="?page=responses">Cancel</a>
+		<button class="btn btn-flat btn-primary" form="package-form">Lưu</button>
+		<a class="btn btn-flat btn-default" href="?page=responses">Hủy bỏ</a>
 	</div>
 </div>
 <script>
@@ -89,7 +89,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
             dataType:"json",
             error:err=>{
                 console.log(err)
-                alert_toast("An error occured while deleting an Image","error");
+                alert_toast("Đã xảy ra lỗi khi xóa Hình ảnh","error");
                 end_loader()
             },
             success:function(resp){
@@ -98,10 +98,10 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                     $('[data-path="'+$path+'"]').closest('.img-item').hide('slow',function(){
                         $('[data-path="'+$path+'"]').closest('.img-item').remove()
                     })
-                    alert_toast("Image Successfully Deleted","success");
+                    alert_toast("Đã xóa hình ảnh thành công","success");
                 }else{
                     console.log(resp)
-                    alert_toast("An error occured while deleting an Image","error");
+                    alert_toast("Đã xảy ra lỗi khi xóa Hình ảnh","error");
                 }
                 end_loader()
             }
@@ -109,7 +109,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
     }
 	$(document).ready(function(){
 		$('.rem_img').click(function(){
-            _conf("Are sure to delete this image permanently?",'delete_img',["'"+$(this).attr('data-path')+"'"])
+            _conf("Bạn có chắc chắn xóa hình ảnh này vĩnh viễn?",'delete_img',["'"+$(this).attr('data-path')+"'"])
         })
 		$('#package-form').submit(function(e){
 			e.preventDefault();
@@ -126,14 +126,14 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 dataType: 'json',
 				error:err=>{
 					console.log(err)
-					alert_toast("An error occured",'error');
+					alert_toast("Đã xảy ra lỗi",'error');
 					end_loader();
 				},
 				success:function(resp){
 					if(typeof resp =='object' && resp.status == 'success'){
 						location.href = "./?page=packages";
 					}else{
-						alert_toast("An error occured",'error');
+						alert_toast("Đã xảy ra lỗi",'error');
 						end_loader();
                         console.log(resp)
 					}

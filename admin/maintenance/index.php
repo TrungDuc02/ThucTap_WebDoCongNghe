@@ -73,7 +73,7 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this package permanently?","delete_package",[$(this).attr('data-id')])
+			_conf("Bạn có chắc chắn xóa gói này vĩnh viễn không?","delete_package",[$(this).attr('data-id')])
 		})
 		$('.table').dataTable();
 	})
@@ -86,14 +86,14 @@
 			dataType:"json",
 			error:err=>{
 				console.log(err)
-				alert_toast("An error occured.",'error');
+				alert_toast("đã xảy ra lỗi.",'error');
 				end_loader();
 			},
 			success:function(resp){
 				if(typeof resp== 'object' && resp.status == 'success'){
 					location.reload();
 				}else{
-					alert_toast("An error occured.",'error');
+					alert_toast("đã xảy ra lỗi.",'error');
 					end_loader();
 				}
 			}

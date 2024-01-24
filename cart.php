@@ -101,14 +101,14 @@
             dataType:'json',
             error:err=>{
                 console.log(err)
-                alert_toast("an error occured", 'error');
+                alert_toast("đã xảy ra lỗi", 'error');
                 end_loader()
             },
             success:function(resp){
                 if(!!resp.status && resp.status == 'success'){
                     end_loader()
                 }else{
-                    alert_toast("an error occured", 'error');
+                    alert_toast("đã xảy ra lỗi", 'error');
                     end_loader()
                 }
             }
@@ -128,7 +128,7 @@
             dataType:'json',
             error:err=>{
                 console.log(err)
-                alert_toast("an error occured", 'error');
+                alert_toast("đã xảy ra lỗi", 'error');
                 end_loader()
             },
             success:function(resp){
@@ -137,7 +137,7 @@
                     calc_total()
                     end_loader()
                 }else{
-                    alert_toast("an error occured", 'error');
+                    alert_toast("đã xảy ra lỗi", 'error');
                     end_loader()
                 }
             }
@@ -153,14 +153,14 @@
             dataType:'json',
             error:err=>{
                 console.log(err)
-                alert_toast("an error occured", 'error');
+                alert_toast("đã xảy ra lỗi", 'error');
                 end_loader()
             },
             success:function(resp){
                 if(!!resp.status && resp.status == 'success'){
                    location.reload()
                 }else{
-                    alert_toast("an error occured", 'error');
+                    alert_toast("đã xảy ra lỗi", 'error');
                     end_loader()
                 }
             }

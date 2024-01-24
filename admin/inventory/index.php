@@ -74,7 +74,7 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this inventory permanently?","delete_inventory",[$(this).attr('data-id')])
+			_conf("Bạn có chắc chắn xóa khoảng không quảng cáo này vĩnh viễn không?","delete_inventory",[$(this).attr('data-id')])
 		})
 		$('.table').dataTable({
 			columnDefs: [
@@ -93,14 +93,14 @@
 			dataType:"json",
 			error:err=>{
 				console.log(err)
-				alert_toast("An error occured.",'error');
+				alert_toast("đã xảy ra lỗi.",'error');
 				end_loader();
 			},
 			success:function(resp){
 				if(typeof resp== 'object' && resp.status == 'success'){
 					location.reload();
 				}else{
-					alert_toast("An error occured.",'error');
+					alert_toast("đã xảy ra lỗi.",'error');
 					end_loader();
 				}
 			}

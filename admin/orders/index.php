@@ -67,7 +67,7 @@
 								<?php elseif($row['status'] == 3): ?>
                                     <span class="badge badge-success">Đã giao hàng</span>
 								<?php elseif($row['status'] == 5): ?>
-                                    <span class="badge badge-success">Đã chọn</span>
+                                    <span class="badge badge-success">Đã hủy (admin)</span>
                                 <?php else: ?>
                                     <span class="badge badge-danger">Đã hủy</span>
                                 <?php endif; ?>

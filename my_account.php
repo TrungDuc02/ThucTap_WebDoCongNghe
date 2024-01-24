@@ -42,7 +42,7 @@
                                             <?php elseif($row['status'] == 1): ?>
                                                 <span class="badge badge-primary">Đóng gói</span>
                                             <?php elseif($row['status'] == 2): ?>
-                                                <span class="badge badge-warning">Đang vận chuyển/span>
+                                                <span class="badge badge-warning">Đang vận chuyển</span>
                                             <?php elseif($row['status'] == 3): ?>
                                                 <span class="badge badge-success">Đã giao hàng</span>
                                             <?php else: ?>
@@ -53,6 +53,7 @@
                             <?php endwhile; ?>
                         </tbody>
                     </table>
+                    
             </div>
         </div>
     </div>
@@ -67,18 +68,18 @@
             dataType:"json",
             error:err=>{
                 console.log(err)
-                alert_toast("an error occured",'error')
+                alert_toast("đã xảy ra lỗi",'error')
                 end_loader()
             },
             success:function(resp){
                 if(typeof resp == 'object' && resp.status == 'success'){
-                    alert_toast("Book cancelled successfully",'success')
+                    alert_toast("Đã hủy sách thành công",'success')
                     setTimeout(function(){
                         location.reload()
                     },2000)
                 }else{
                     console.log(resp)
-                    alert_toast("an error occured",'error')
+                    alert_toast("đã xảy ra lỗi",'error')
                 }
                 end_loader()
             }

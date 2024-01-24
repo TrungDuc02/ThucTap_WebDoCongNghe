@@ -8,7 +8,7 @@
 
                 <form class="form-inline" id="search-form">
                   <div class="input-group">
-                    <input class="form-control form-control-sm form " type="search" placeholder="Tìm kiếm..." aria-label="Search" name="search"  value="<?php echo isset($_GET['search']) ? $_GET['search'] : "" ?>"  aria-describedby="button-addon2">
+                    <input class="form-control form-control-sm form "type="search" placeholder="Tìm kiếm..." aria-label="Search" name="search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : "" ?>"  aria-describedby="button-addon2" autocomplete="off">
                     <div class="input-group-append">
                       <button class="btn btn-outline-light btn-sm m-0" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
                     </div>

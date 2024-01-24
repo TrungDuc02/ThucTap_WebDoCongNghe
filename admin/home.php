@@ -1,12 +1,12 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <h1>Chào Mừng đến <?php echo $_settings->info('name') ?></h1>
 <hr>
 <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon bg-maroon elevation-1"><i class="fas fa-mobile-alt"></i></span>
-
               <div class="info-box-content">
-                <span class="info-box-text">Tổng số sản phẩm</span>
+                <span class="info-box-text">Số lượng sản phẩm</span>
                 <span class="info-box-number">
                   <?php 
                     $inv = $conn->query("SELECT sum(quantity) as total FROM inventory ")->fetch_assoc()['total'];
@@ -29,7 +29,7 @@
                 <span class="info-box-text">Đơn hàng chờ xử lý</span>  <!-----Pending Orders------->
                 <span class="info-box-number">
                   <?php 
-                    $pending = $conn->query("SELECT sum(id) as total FROM `orders` where status = '0' ")->fetch_assoc()['total'];
+                    $pending = $conn->query("SELECT COUNT(*) as total FROM `orders` where status = '0' ")->fetch_assoc()['total'];
                     echo number_format($pending);
                   ?>
                 </span>
@@ -39,6 +39,97 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-pink elevation-1"><i class="fa fa-list-ol"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Tổng số đơn hàng đã bán</span>  <!-----Pending Orders------->
+                <span class="info-box-number">
+                <?php 
+                  $orders_sold = $conn->query("SELECT COUNT(*) as total FROM `orders` WHERE paid = 1")->fetch_assoc()['total'];
+                     echo number_format($orders_sold);
+                    ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-black elevation-1"><i class="fa fa-list-ol"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Tổng số tài khoản khách hàng</span>  <!-----Pending Orders------->
+                <span class="info-box-number">
+                <?php 
+                 $total_customers = $conn->query("SELECT COUNT(*) as total FROM `clients`")->fetch_assoc()['total'];
+                  echo number_format($total_customers);
+                    ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-gray  elevation-1"><i class="fa fa-list"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Tổng số sản phẩm</span>  <!-----Pending Orders------->
+                <span class="info-box-number">
+                <?php 
+                $total_products = $conn->query("SELECT COUNT(*) as total FROM `products`")->fetch_assoc()['total'];
+                  echo number_format($total_products);
+                    ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-blue elevation-1"><i class="fa fa-list-ol"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Số lượng sản phẩm nhập hôm nay</span>  <!-----Pending Orders------->
+                <span class="info-box-number">
+                <?php 
+                 $current_date = date('Y-m-d'); // Lấy ngày hiện tại
+                   $total_new_products = $conn->query("SELECT SUM(quantity) as total FROM `inventory` WHERE DATE(date_created) = '{$current_date}'")->fetch_assoc()['total'];
+                     echo number_format($total_new_products);
+                      ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-yellow elevation-1"><i class="fa fa-list-ol"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Đơn hàng đã bán hôm nay</span>  <!-----Pending Orders------->
+                <span class="info-box-number">
+                <?php 
+                  $orders_sold = $conn->query("SELECT COUNT(*) as total FROM `orders` WHERE date(date_created) = CURDATE() AND paid = 1")->fetch_assoc()['total'];
+                   echo number_format($orders_sold);
+                  ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
 
           <!-- fix for small devices only -->
           <div class="clearfix hidden-md-up"></div>
@@ -51,16 +142,29 @@
                 <span class="info-box-text">Tổng doanh số hôm nay</span>
                 <span class="info-box-number">
                 <?php 
-                    $sales = $conn->query("SELECT sum(amount) as total FROM `orders` where date(date_created) = '".date('Y-m-d')."' ")->fetch_assoc()['total'];
-                    echo number_format($sales);
-                  ?>
+                $current_date = date('Y-m-d'); // Lấy ngày hiện tại
+               $sales = $conn->query("SELECT SUM(amount) as total FROM `orders` WHERE DATE(date_created) = '{$current_date}' AND paid = 1")->fetch_assoc()['total'];
+                echo number_format($sales);
+                ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
+
+
+
+          
+    <!----- end ----->
         </div>
+
+
+
+
+
+
+        
 <div class="container">
   <?php 
     $files = array();
