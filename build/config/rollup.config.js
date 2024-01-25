@@ -25,7 +25,7 @@ module.exports = {
   plugins: [
     babel({
       exclude: 'node_modules/**',
-      // Include the helpers in the bundle, at most one copy of each
+      // Include the helpers in the bundle, at most one copy of eachaa
       babelHelpers: 'bundled'
     })
   ]

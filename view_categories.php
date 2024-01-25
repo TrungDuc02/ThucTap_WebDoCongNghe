@@ -33,7 +33,7 @@ elseif(isset($_GET['s'])){
         </div>
     </div>
 </header>
-<!-- Section-->
+<!-- Sectionn-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-2 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-2 justify-content-center">

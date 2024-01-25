@@ -74,7 +74,7 @@
                     </li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=maintenance/category" class="nav-link nav-maintenance_category">
-                        <i class="nav-icon fas fa-th-list"></i>
+                        <i class="nav-icon fa fa-list-alt"></i>
                         <p>
                         Danh sách danh mục (*)
                         </p>
@@ -92,7 +92,7 @@
 
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=maintenance/account_clients" class="nav-link nav-maintenance_account_clients">
-                        <i class="nav-icon fas fa-th-list"></i>
+                        <i class="nav-icon fas fa fa-user"></i>
                         <p>
                         Danh sách khách hàng
                         </p>

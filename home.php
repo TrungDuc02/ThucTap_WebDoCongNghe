@@ -111,7 +111,7 @@ $brands = isset($_GET['b']) ? json_decode(urldecode($_GET['b'])) : array();
                                         <span><b>Price: </b><?php echo $v ?></span>
                                     <?php endforeach; ?>
                                 </div>
-                                <p class="m-0"><small>Thương hiệu: <?php echo $row['bname'] ?></small></p>
+                                <p class="m-0"><small>Thương hiệu:<?php echo $row['bname'] ?></small></p>
                             </div>
                         </a>
                     </div>

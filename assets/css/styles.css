@@ -32,7 +32,7 @@
     --bs-secondary: #6c757d;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
-    --bs-warning: #ffc107;
+    --bs-warning: #f9bd09;
     --bs-danger: #dc3545;
     --bs-light: #f8f9fa;
     --bs-dark: #212529;
@@ -40,7 +40,7 @@
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
-
+/*color*/
 *,
 *::before,
 *::after {

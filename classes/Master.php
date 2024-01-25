@@ -179,6 +179,20 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 
 	}
+
+	function delete_account_clients(){
+		extract($_POST);
+		$del = $this->conn->query("DELETE FROM `clients` where id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success',"Xóa tài khoản thành công!.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+
+	}
 	function save_product(){
 		foreach($_POST as $k =>$v){
 			$_POST[$k] = addslashes($v);
@@ -606,6 +620,9 @@ switch ($action) {
 	break;
 	case 'delete_sub_category':
 		echo $Master->delete_sub_category();
+	break;
+	case 'delete_account_clients':
+		echo $Master->delete_account_clients();
 	break;
 	case 'save_product':
 		echo $Master->save_product();

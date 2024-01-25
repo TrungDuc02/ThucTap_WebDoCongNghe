@@ -5,8 +5,8 @@
 <?php endif;?>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">Danh sách tài khoản</h3> <br>
-        <a href="?page=maintenance/account_admin" class="listaccountadmin">Danh sách tài khoản quản lý</a>
+		<h3 class="card-title">Danh sách tài khoản quản lý</h3> <br>
+        <a href="?page=maintenance/account_clients" class="listaccountadmin">Quay lại</a>
 		<div class="card-tools">
 			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span> Tạo mới</a>
 		</div>
@@ -17,27 +17,23 @@
 			<table class="table table-hover table-striped">
 				<colgroup>
 					<col width="5%">  <!---# --->
-					<col width="13%"> <!---Ngày tạo--->
-					<col width="8%">   <!---Họ --->
-					<col width="8%">   <!---Tên --->
-					<col width="8%">   <!---gioi tinh --->
-					<col width="10%">   <!---Liên hệ--->
-                    <col width="15%">   <!---email --->
-                    <col width="10%">   <!---pass--->
-                    <col width="13%">   <!---địa chỉ--->
+                    <col width="10%">   <!---ngày tạo --->
+					<col width="10%">   <!---Họ --->
+					<col width="10%">   <!---Tên --->
+					<col width="10%">   <!---tên đăng nhập--->
+                    <col width="10%">   <!---pass--->     
+                    <col width="10%">   <!---ngày sửa --->           
 					<col width="10%">   <!---hành động --->
 				</colgroup>
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Ngày tạo</th>
+                        <th>Ngày Tạo</th>
 						<th>Họ</th>
 						<th>Tên</th>
-						<th>Giới tính</th>
-						<th>Liên hệ</th>
-                        <th>Email</th>
+						<th>Tên đăng nhập</th>
                         <th>Mật khẩu  <span style="color: red;">( đã mã hóa ) *</span></th>
-                        <th>Địa chỉ</th>
+                        <th>Ngày cập nhật</th>
 						<th>Hành động</th>
 					</tr>
 				</thead>
@@ -45,22 +41,19 @@
 
                 <?php 
     $i = 1;
-    $qry = $conn->query("SELECT * FROM `clients` ORDER BY UNIX_TIMESTAMP(date_created) DESC");
+    $qry = $conn->query("SELECT * FROM `users` ORDER BY UNIX_TIMESTAMP(id) DESC");
     while($row = $qry->fetch_assoc()):
         $password = md5($row['password']); // Lưu mật khẩu đã mã hóa từ MD5 vào biến tạm thời
         $row['password'] = $password; // Gán mật khẩu đã mã hóa vào cột password
 ?>
     <tr>
         <td class="text-center"><?php echo $i++; ?></td>
-        <td><?php echo date("H:i d-m-Y", strtotime($row['date_created'])) ?></td>
+        <td><?php echo date("H:i d-m-Y", strtotime($row['date_added'])) ?></td>
         <td><?php echo $row['firstname'] ?></td>
         <td><?php echo $row['lastname'] ?></td>
-		<td><?php echo $row['gender'] ?></td>
-        <td><?php echo $row['contact'] ?></td>
-        <td><?php echo $row['email'] ?></td>
+        <td><?php echo $row['username'] ?></td>
         <td><?php echo $password ?></td> <!-- Hiển thị mật khẩu đã được giải mã từ MD5 -->
-        <td><?php echo $row['default_delivery_address'] ?></td>
-        
+        <td><?php echo date("H:i d-m-Y", strtotime($row['date_updated'])) ?></td>
         <!-- Các cột khác của bảng clients, nếu có -->
         <td align="center">
             <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
@@ -89,13 +82,13 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Bạn có chắc chắn xóa người dùng này vĩnh viễn không?","delete_account_clients",[$(this).attr('data-id')])
+			_conf("Bạn có chắc chắn xóa người quản lý này vĩnh viễn không?","",[$(this).attr('data-id')])
 		})
 		$('#create_new').click(function(){
-			uni_modal("<i class='fa fa-plus'></i> Thêm tài khoản mới","maintenance/manage_account_clients.php")
+			uni_modal("<i class='fa fa-plus'></i> Thêm người quản lý mới","maintenance/manage_account_admin.php")
 		})
 		$('.edit_data').click(function(){
-			uni_modal("<i class='fa fa-edit'></i> Cập nhật tài khoản khách hàng","maintenance/manage_account_clients.php?id="+$(this).attr('data-id'))
+			uni_modal("<i class='fa fa-edit'></i> Cập nhật tài khoản người quản lý","maintenance/manage_account_admin.php?id="+$(this).attr('data-id'))
 		})
 		$('.table').dataTable({
 			columnDefs: [
@@ -105,10 +98,10 @@
 		});
 		$('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
 	})
-	function delete_account_clients($id){
+	function delete_admin($id){
 		start_loader();
 		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_account_clients",
+			url:_base_url_+"classes/Master.php?f=delete_sub_category",
 			method:"POST",
 			data:{id: $id},
 			dataType:"json",

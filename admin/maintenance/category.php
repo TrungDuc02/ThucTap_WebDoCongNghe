@@ -46,9 +46,9 @@
 							<td ><p class="truncate-1 m-0"><?php echo $row['description'] ?></p></td>
 							<td class="text-center">
                                 <?php if($row['status'] == 1): ?>
-                                    <span class="badge badge-success">Active</span>
+                                    <span class="badge badge-success">Hoạt động</span>
                                 <?php else: ?>
-                                    <span class="badge badge-danger">Inactive</span>
+                                    <span class="badge badge-danger">Không hoạt động</span>
                                 <?php endif; ?>
                             </td>
 							<td align="center">
