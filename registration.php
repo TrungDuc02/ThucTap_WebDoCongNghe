@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group d-flex justify-content-between">
                     <a href="javascript:void()" id="login-show"style="text-decoration: none;">Bạn đã có tài khoản? Đăng nhập ngay</a>
-                    <button class="btn btn-primary btn-flat">Đăng ký</button>
+                    <button class="btn btn-primary btn-flat rounded">Đăng ký</button>
                 </div>
             </div>
         </div>
@@ -104,3 +104,18 @@
        
     })
 </script>
+
+<style>
+     .btn-flat {
+  /* Các thuộc tính CSS cho nút với giao diện tối */
+  background-image: linear-gradient(to right, blue, cyan); /* Màu sắc gradient từ trái qua phải */
+  background-size: 200% auto; /* Kích thước ảnh nền */
+  transition: background-position 0.3s ease; /* Transition cho thuộc tính background-position */
+}
+    .btn:hover {
+  background-color: #3498db; /* Thay đổi màu nền khi hover */
+  color: white; /* Thay đổi màu chữ khi hover */
+  background-position: right; 
+  
+}
+</style>

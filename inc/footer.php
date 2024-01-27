@@ -59,10 +59,10 @@
   })
 </script>
 <!-- Footer-->
-<footer class="py-4 bg-maroon">
+<footer class="py-4 bg-gray">
             <div class="container">
               <p class="m-0 text-center text-white">Copyright &copy; <?php echo $_settings->info('short_name') ?> - Thiết bị di động | Tư vấn Laptop | giá rẻ - 2024</p>
-              <p class="m-0 text-center text-white">Developed By: <a href="https://www.facebook.com/Trungduc20/">Le Trung Duc - DH10C6</a></p>
+              <p class="m-0 text-center text-white">Developed By: <a href="https://www.facebook.com/Trungduc20/" style="color:cyan;text-decoration: none;;">Le Trung Duc - DH10C6</a></p>
           </div>
         </footer>
 

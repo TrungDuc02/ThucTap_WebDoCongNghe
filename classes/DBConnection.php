@@ -18,7 +18,7 @@ class DBConnection{
             $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
             
             if (!$this->conn) {
-                echo 'Cannot connect to database server';
+                echo 'Không thể kết nối với máy chủ cơ sở dữ liệu';
                 exit;
             }            
         }    

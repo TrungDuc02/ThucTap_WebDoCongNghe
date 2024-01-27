@@ -73,7 +73,7 @@ $date_end = isset($_GET['date_end']) ? $_GET['date_end'] :  date("Y-m-d") ;
                     ?>
                     <tr>
                         <td class="text-center"><?php echo $i++ ?></td>
-                        <td><?php echo $row['date_created'] ?></td>
+                        <td><?php echo date("H:i d-m-Y ",strtotime($row['date_created'])) ?></td>
                         <td>
                             <p class="m-0"><?php echo $roww['name'] ?></p>
                             <p class="m-0"><small>Thương hiệu: <?php echo $roww['bname'] ?></small></p>

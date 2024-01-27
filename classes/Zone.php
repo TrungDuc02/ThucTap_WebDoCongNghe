@@ -26,7 +26,7 @@ Class Zone extends DBConnection {
 			}else{
 				$qry = $this->conn->query("INSERT INTO barangay_list set {$data}");
 				if($qry){
-					$this->settings->set_flashdata('success','zone successfully saved.');
+					$this->settings->set_flashdata('success','vùng đã được lưu thành công.');
 					return 1;
 				}else{
 					return "INSERT INTO barangay_list set {$data}";
@@ -40,7 +40,7 @@ Class Zone extends DBConnection {
 			}else{
 				$qry = $this->conn->query("UPDATE barangay_list set $data where id = {$id}");
 				if($qry){
-					$this->settings->set_flashdata('success','zone successfully updated.');
+					$this->settings->set_flashdata('success','vùng được cập nhật thành công.');
 					return 1;
 				}else{
 					return "INSERT INTO barangay_list set {$data}";
@@ -53,7 +53,7 @@ Class Zone extends DBConnection {
 		extract($_POST);
 		$qry = $this->conn->query("DELETE FROM barangay_list where id = $id");
 		if($qry){
-			$this->settings->set_flashdata('success','zone successfully deleted.');
+			$this->settings->set_flashdata('success','vùng đã xóa thành công.');
 			return 1;
 		}else{
 			return false;

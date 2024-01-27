@@ -42,7 +42,7 @@ $total = 0;
                         <div class="col my-3">
                         <h4 class="text-muted">Phương thức thanh toán</h4>
                             <div class="d-flex w-100 justify-content-between">
-                                <button class="btn btn-flat btn-dark">Thanh toán khi nhận hàng</button>
+                                <button class="btn btn-flat btn-dark rounded">Thanh toán khi nhận hàng</button>
                                 <span id="paypal-button"></span>
                             </div>
                         </div>
@@ -53,87 +53,189 @@ $total = 0;
     </div>
 </section>
 <script>
+
+// paypal.Button.render({
+//     env: 'sandbox', // change for production if app is live,
+ 
+//         //app's client id's
+// 	client: {
+//         sandbox:    'AdDNu0ZwC3bqzdjiiQlmQ4BRJsOarwyMVD_L4YQPrQm4ASuBg4bV5ZoH-uveg8K_l9JLCmipuiKt4fxn',
+//         //production: 'AaBHKJFEej4V6yaArjzSx9cuf-UYesQYKqynQVCdBlKuZKawDDzFyuQdidPOBSGEhWaNQnnvfzuFB9SM'
+//     },
+ 
+//     commit: true, // Show a 'Pay Now' button
+ 
+//     style: {
+//     	color: 'blue',
+//     	size: 'small'
+//     },
+ 
+//     payment: function(data, actions) {
+//         return actions.payment.create({
+//             payment: {
+//                 transactions: [
+//                     {
+//                     	//total purchase
+//                         amount: { 
+//             	total: '<?php echo $total; ?>',
+//                         	currency: 'PHP' 
+//                         }
+//                     }
+//                 ]
+//             }
+//         });
+//     },
+ 
+//     onAuthorize: function(data, actions) {
+//         return actions.payment.execute().then(function(payment) {
+//     		// //sweetalert for successful transaction
+//     		// swal('Thank you!', 'Paypal purchase successful.', 'success');
+//             payment_online()
+//         });
+//     },
+ 
+// }, '#paypal-button');
+
+// function payment_online(){
+//     $('[name="payment_method"]').val("Online Payment")
+//     $('[name="paid"]').val(1)
+//     $('#place_order').submit()
+// }
+// $(function(){
+//     $('[name="order_type"]').change(function(){
+//         if($(this).val() ==2){
+//             $('.address-holder').hide('slow')
+//         }else{
+//             $('.address-holder').show('slow')
+//         }
+//     })
+//     $('#place_order').submit(function(e){
+//         e.preventDefault()
+//         start_loader();
+//         $.ajax({
+//             url:'classes/Master.php?f=place_order',
+//             method:'POST',
+//             data:$(this).serialize(),
+//             dataType:"json",
+//             error:err=>{
+//                 console.log(err)
+//                 alert_toast("đã xảy ra lỗi","error")
+//                 end_loader();
+//             },
+//             success:function(resp){
+//                 if(!!resp.status && resp.status == 'success'){
+//                     alert_toast("Order Successfully placed.","success")
+//                     setTimeout(function(){
+//                         location.replace('./')
+//                     },2000)
+//                 }else{
+//                     console.log(resp)
+//                     alert_toast("đã xảy ra lỗi","error")
+//                     end_loader();
+//                 }
+//             }
+//         })
+//     })
+// })
+
 paypal.Button.render({
-    env: 'sandbox', // change for production if app is live,
- 
-        //app's client id's
-	client: {
-        sandbox:    'AdDNu0ZwC3bqzdjiiQlmQ4BRJsOarwyMVD_L4YQPrQm4ASuBg4bV5ZoH-uveg8K_l9JLCmipuiKt4fxn',
-        //production: 'AaBHKJFEej4V6yaArjzSx9cuf-UYesQYKqynQVCdBlKuZKawDDzFyuQdidPOBSGEhWaNQnnvfzuFB9SM'
+    env: 'sandbox', // thay đổi thành 'production' nếu ứng dụng đã được triển khai
+
+    // Client ID của ứng dụng
+    client: {
+        sandbox: 'AdDNu0ZwC3bqzdjiiQlmQ4BRJsOarwyMVD_L4YQPrQm4ASuBg4bV5ZoH-uveg8K_l9JLCmipuiKt4fxn',
+        // production: 'AaBHKJFEej4V6yaArjzSx9cuf-UYesQYKqynQVCdBlKuZKawDDzFyuQdidPOBSGEhWaNQnnvfzuFB9SM'
     },
- 
-    commit: true, // Show a 'Pay Now' button
- 
+
+    commit: true, // Hiển thị nút 'Pay Now'
+
     style: {
-    	color: 'blue',
-    	size: 'small'
+        color: 'blue',
+        size: 'small'
     },
- 
-    payment: function(data, actions) {
+
+    payment: function (data, actions) {
         return actions.payment.create({
             payment: {
                 transactions: [
                     {
-                    	//total purchase
-                        amount: { 
-                        	total: '<?php echo $total; ?>', 
-                        	currency: 'PHP' 
+                        // Tổng số tiền thanh toán
+                        amount: {
+                            total: '<?php echo $total; ?>',
+                            currency: 'PHP'
                         }
                     }
                 ]
             }
         });
     },
- 
-    onAuthorize: function(data, actions) {
-        return actions.payment.execute().then(function(payment) {
-    		// //sweetalert for successful transaction
-    		// swal('Thank you!', 'Paypal purchase successful.', 'success');
-            payment_online()
+
+    onAuthorize: function (data, actions) {
+        return actions.payment.execute().then(function (payment) {
+            payment_online();
         });
     },
- 
+
 }, '#paypal-button');
 
-function payment_online(){
-    $('[name="payment_method"]').val("Online Payment")
-    $('[name="paid"]').val(1)
-    $('#place_order').submit()
+function payment_online() {
+    $('[name="payment_method"]').val("Online Payment");
+    $('[name="paid"]').val(1);
+    $('#place_order').submit();
 }
-$(function(){
-    $('[name="order_type"]').change(function(){
-        if($(this).val() ==2){
-            $('.address-holder').hide('slow')
-        }else{
-            $('.address-holder').show('slow')
+
+$(function () {
+    $('[name="order_type"]').change(function () {
+        if ($(this).val() == 2) {
+            $('.address-holder').hide('slow');
+        } else {
+            $('.address-holder').show('slow');
         }
-    })
-    $('#place_order').submit(function(e){
-        e.preventDefault()
+    });
+
+    $('#place_order').submit(function (e) {
+        e.preventDefault();
         start_loader();
         $.ajax({
-            url:'classes/Master.php?f=place_order',
-            method:'POST',
-            data:$(this).serialize(),
-            dataType:"json",
-            error:err=>{
-                console.log(err)
-                alert_toast("đã xảy ra lỗi","error")
+            url: 'classes/Master.php?f=place_order',
+            method: 'POST',
+            data: $(this).serialize(),
+            dataType: "json",
+            error: function (err) {
+                console.log(err);
+                alert_toast("Đã xảy ra lỗi", "error");
                 end_loader();
             },
-            success:function(resp){
-                if(!!resp.status && resp.status == 'success'){
-                    alert_toast("Order Successfully placed.","success")
-                    setTimeout(function(){
-                        location.replace('./')
-                    },2000)
-                }else{
-                    console.log(resp)
-                    alert_toast("đã xảy ra lỗi","error")
+            success: function (resp) {
+                if (!!resp.status && resp.status == 'success') {
+                    alert_toast("Order Successfully placed.", "success");
+                    setTimeout(function () {
+                        location.replace('./');
+                    }, 2000);
+                } else {
+                    console.log(resp);
+                    alert_toast("Đã xảy ra lỗi", "error");
                     end_loader();
                 }
             }
-        })
-    })
-})
+        });
+    });
+});
+
 </script>
+
+<style>
+
+    .btn-dark {
+  /* Các thuộc tính CSS cho nút với giao diện tối */
+  background-image: linear-gradient(to right, blue, cyan); /* Màu sắc gradient từ trái qua phải */
+  background-size: 200% auto; /* Kích thước ảnh nền */
+  transition: background-position 0.3s ease; /* Transition cho thuộc tính background-position */
+}
+    .btn:hover {
+  background-color: #3498db; /* Thay đổi màu nền khi hover */
+  color: white; /* Thay đổi màu chữ khi hover */
+  background-position: right; 
+  
+}
+</style>

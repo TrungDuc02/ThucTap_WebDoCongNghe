@@ -4,7 +4,7 @@
             <div class="card-body">
                 <div class="w-100 justify-content-between d-flex">
                     <h4><b>Cập nhật chi tiết tài khoản</b></h4>
-                    <a href="./?p=my_account" class="btn btn btn-default btn-flat bg-maroon"><div class="fa fa-angle-left"></div> Quay lại danh sách đơn hàng</a>
+                    <a href="./?p=my_account" class="btn btn btn-default btn-flat bg-cyan"><div class="fa fa-angle-left"></div> Quay lại danh sách đơn hàng</a>
                 </div>
                     <hr class="border-warning">
                     <div class="col-md-6">
@@ -26,10 +26,12 @@
                             <div class="form-group">
                                 <label for="" class="control-label">Giới tính</label>
                                 <select name="gender" id="" class="custom-select select" required>
-                                    <option <?php echo $_settings->userdata('gender') == "Male" ? "selected" : '' ?>>Nam</option>
-                                    <option <?php echo $_settings->userdata('gender') == "Female" ? "selected" : '' ?>>Nữ</option>
+                                    <option <?php echo $_settings->userdata('gender') == "Nam" ? "selected" : '' ?>>Nam</option>
+                                    <option <?php echo $_settings->userdata('gender') == "Nữ" ? "selected" : '' ?>>Nữ</option>
                                 </select>
+                                
                             </div>
+                            
                             <div class="form-group">
                                 <label for="" class="control-label">Địa chỉ giao hàng</label>
                                 <textarea class="form-control form" rows='3' name="default_delivery_address"><?php echo $_settings->userdata('default_delivery_address') ?></textarea>

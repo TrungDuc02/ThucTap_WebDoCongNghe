@@ -1,8 +1,8 @@
 </style>
 <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-dark-primary bg-purple elevation-4 sidebar-no-expand">
+      <aside class="main-sidebar sidebar-dark-primary bg-dark elevation-4 sidebar-no-expand">
         <!-- Brand Logo -->
-        <a href="<?php echo base_url ?>admin" class="brand-link bg-maroon text-sm">
+        <a href="<?php echo base_url ?>admin" class="brand-link bg-gray text-sm">
         <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-3" style="opacity: .8;width: 1.5rem;height: 1.5rem;max-height: unset">
         <span class="brand-text font-weight-light"><?php echo $_settings->info('short_name') ?></span>
         </a>
@@ -145,6 +145,6 @@
         }
 
       }
-      $('.nav-link.active').addClass('bg-maroon')
+      $('.nav-link.active').addClass('bg-cyan') //nut bam mau thanh admin
     })
   </script>

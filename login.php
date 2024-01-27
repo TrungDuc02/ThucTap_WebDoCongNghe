@@ -28,7 +28,7 @@
                 <span style="display: inline-block; margin-right: 105px;">   
                 <a href="javascript:void()" id="create_account" style="text-decoration: none;">Tạo tài khoản</a></span>
 
-                    <button class="btn btn-primary btn-flat" style="font-size: 16px;">Đăng nhập</button>
+                    <button class="btn btn-primary btn-flat rounded" style="font-size: 16px;">Đăng nhập</button>
 
                 </div>
             </form>
@@ -79,3 +79,18 @@
     })
 
 </script>
+
+<style>
+     .btn-flat {
+  /* Các thuộc tính CSS cho nút với giao diện tối */
+  background-image: linear-gradient(to right, blue, cyan); /* Màu sắc gradient từ trái qua phải */
+  background-size: 200% auto; /* Kích thước ảnh nền */
+  transition: background-position 0.3s ease; /* Transition cho thuộc tính background-position */
+}
+    .btn:hover {
+  background-color: #3498db; /* Thay đổi màu nền khi hover */
+  color: white; /* Thay đổi màu chữ khi hover */
+  background-position: right; 
+  
+}
+</style>

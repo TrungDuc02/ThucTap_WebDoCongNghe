@@ -35,7 +35,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Brand Name already exist.";
+			$resp['msg'] = "Tên thương hiệu đã tồn tại.";
 			return json_encode($resp);
 			exit;
 		}
@@ -49,9 +49,9 @@ Class Master extends DBConnection {
 		if($save){
 			$resp['status'] = 'success';
 			if(empty($id))
-				$this->settings->set_flashdata('success',"New Brand successfully saved.");
+				$this->settings->set_flashdata('success',"Đã lưu thành công Thương hiệu mới.");
 			else
-				$this->settings->set_flashdata('success',"Brand successfully updated.");
+				$this->settings->set_flashdata('success',"Đã cập nhật Thương hiệu thành công.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['err'] = $this->conn->error."[{$sql}]";
@@ -63,7 +63,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `brands` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Brand successfully deleted.");
+			$this->settings->set_flashdata('success',"Đã xóa Thương hiệu thành công.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -89,7 +89,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Category already exist.";
+			$resp['msg'] = "Danh mục đã tồn tại.";
 			return json_encode($resp);
 			exit;
 		}
@@ -103,9 +103,9 @@ Class Master extends DBConnection {
 		if($save){
 			$resp['status'] = 'success';
 			if(empty($id))
-				$this->settings->set_flashdata('success',"New Category successfully saved.");
+				$this->settings->set_flashdata('success',"Danh mục mới đã được lưu thành công.");
 			else
-				$this->settings->set_flashdata('success',"Category successfully updated.");
+				$this->settings->set_flashdata('success',"Danh mục được cập nhật thành công.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['err'] = $this->conn->error."[{$sql}]";
@@ -117,7 +117,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `categories` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Category successfully deleted.");
+			$this->settings->set_flashdata('success',"Đã xóa thành công danh mục.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -143,7 +143,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Sub Category already exist.";
+			$resp['msg'] = "Danh mục phụ đã tồn tại.";
 			return json_encode($resp);
 			exit;
 		}
@@ -157,9 +157,9 @@ Class Master extends DBConnection {
 		if($save){
 			$resp['status'] = 'success';
 			if(empty($id))
-				$this->settings->set_flashdata('success',"New Sub Category successfully saved.");
+				$this->settings->set_flashdata('success',"Danh mục phụ mới đã được lưu thành công.");
 			else
-				$this->settings->set_flashdata('success',"Sub Category successfully updated.");
+				$this->settings->set_flashdata('success',"Danh mục phụ được cập nhật thành công.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['err'] = $this->conn->error."[{$sql}]";
@@ -171,7 +171,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `sub_categories` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Sub Category successfully deleted.");
+			$this->settings->set_flashdata('success',"Danh mục phụ đã được xóa thành công.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -215,7 +215,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Product already exist.";
+			$resp['msg'] = "Sản phẩm đã tồn tại.";
 			return json_encode($resp);
 			exit;
 		}
@@ -236,7 +236,7 @@ Class Master extends DBConnection {
 					if(!empty($_FILES['img']['tmp_name'][$k])){
 						$accept = array('image/jpeg','image/png');
 						if(!in_array($_FILES['img']['type'][$k],$accept)){
-							$err = "Image file type is invalid";
+							$err = "Loại tệp hình ảnh không hợp lệ";
 							break;
 						}
 						if($_FILES['img']['type'][$k] == 'image/jpeg')
@@ -244,7 +244,7 @@ Class Master extends DBConnection {
 						elseif($_FILES['img']['type'][$k] == 'image/png')
 							$uploadfile = imagecreatefrompng($_FILES['img']['tmp_name'][$k]);
 						if(!$uploadfile){
-							$err = "Image is invalid";
+							$err = "Hình ảnh không hợp lệ";
 							break;
 						}
 						$temp = imagescale($uploadfile,400,400);
@@ -258,16 +258,16 @@ Class Master extends DBConnection {
 				}
 				if(!empty($err)){
 					$resp['status'] = 'failed';
-					$resp['msg'] = 'Product successfully saved but '.$err;
+					$resp['msg'] = 'Sản phẩm đã được lưu thành công nhưng '.$err;
 					$resp['id'] = $pid;
 				}
 			}
 			if(!isset($resp)){
 				$resp['status'] = 'success';
 				if(empty($id))
-					$this->settings->set_flashdata('success',"New Book successfully saved.");
+					$this->settings->set_flashdata('success',"Sản phẩm mới đã được lưu thành công.");
 				else
-					$this->settings->set_flashdata('success',"Book successfully updated.");
+					$this->settings->set_flashdata('success',"Sản phẩm đã cập nhật thành công.");
 			}
 		}else{
 			$resp['status'] = 'failed';
@@ -280,7 +280,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `products` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Product successfully deleted.");
+			$this->settings->set_flashdata('success',"Sản phẩm đã được xóa thành công.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -295,11 +295,11 @@ Class Master extends DBConnection {
 				$resp['status'] = 'success';
 			}else{
 				$resp['status'] = 'failed';
-				$resp['error'] = 'failed to delete '.$path;
+				$resp['error'] = 'không thể xóa '.$path;
 			}
 		}else{
 			$resp['status'] = 'failed';
-			$resp['error'] = 'Unkown '.$path.' path';
+			$resp['error'] = 'Không xác định '.$path.' path';
 		}
 		return json_encode($resp);
 	}
@@ -317,7 +317,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Inventory already exist.";
+			$resp['msg'] = "Hàng tồn kho đã tồn tại.";
 			return json_encode($resp);
 			exit;
 		}
@@ -331,9 +331,9 @@ Class Master extends DBConnection {
 		if($save){
 			$resp['status'] = 'success';
 			if(empty($id))
-				$this->settings->set_flashdata('success',"New Inventory successfully saved.");
+				$this->settings->set_flashdata('success',"Hàng tồn kho mới đã được lưu thành công.");
 			else
-				$this->settings->set_flashdata('success',"Inventory successfully updated.");
+				$this->settings->set_flashdata('success',"Hàng tồn kho được cập nhật thành công.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['err'] = $this->conn->error."[{$sql}]";
@@ -345,7 +345,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `inventory` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Invenory successfully deleted.");
+			$this->settings->set_flashdata('success',"Đã xóa hàng tồn kho thành công.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -368,7 +368,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Email already taken.";
+			$resp['msg'] = "Email đã tồn tại.";
 			return json_encode($resp);
 			exit;
 		}
@@ -383,9 +383,9 @@ Class Master extends DBConnection {
 		if($save){
 			$resp['status'] = 'success';
 			if(empty($id))
-				$this->settings->set_flashdata('success',"Account successfully created.");
+				$this->settings->set_flashdata('success',"Tạo tài khoản thành công.");
 			else
-				$this->settings->set_flashdata('success',"Account successfully updated.");
+				$this->settings->set_flashdata('success',"Tài khoản được cập nhật thành công.");
 			foreach($_POST as $k =>$v){
 					$this->settings->set_userdata($k,$v);
 			}
@@ -478,7 +478,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($delete){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Order successfully deleted");
+			$this->settings->set_flashdata('success',"Đơn hàng đã được xóa thành công");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['err'] = $this->conn->error."[{$sql}]";
@@ -548,7 +548,7 @@ Class Master extends DBConnection {
 		$update = $this->conn->query("UPDATE `orders` set `paid` = '1' where id = '{$id}' ");
 		if($update){
 			$resp['status'] ='success';
-			$this->settings->set_flashdata("success"," Order payment status successfully updated.");
+			$this->settings->set_flashdata("success"," Trạng thái thanh toán đơn hàng được cập nhật thành công.");
 		}else{
 			$resp['status'] ='failed';
 			$resp['err'] =$this->conn->error;
@@ -562,7 +562,7 @@ Class Master extends DBConnection {
 			$_POST['password'] = md5($password);
 			if(md5($cpassword) != $this->settings->userdata('password')){
 				$resp['status'] = 'failed';
-				$resp['msg'] = "Current Password is Incorrect";
+				$resp['msg'] = "Mật khẩu hiện tại không đúng";
 				return json_encode($resp);
 				exit;
 			}
@@ -571,7 +571,7 @@ Class Master extends DBConnection {
 		$check = $this->conn->query("SELECT * FROM `clients`  where `email`='{$email}' and `id` != $id ")->num_rows;
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Email already taken.";
+			$resp['msg'] = "Email đã tồn tại.";
 			return json_encode($resp);
 			exit;
 		}

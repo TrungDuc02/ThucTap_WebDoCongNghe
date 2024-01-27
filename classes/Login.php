@@ -13,7 +13,7 @@ class Login extends DBConnection {
 		parent::__destruct();
 	}
 	public function index(){
-		echo "<h1>Access Denied</h1> <a href='".base_url."'>Go Back.</a>";
+		echo "<h1>Truy cập bị từ chối</h1> <a href='".base_url."'>Quay lại.</a>";
 	}
 	public function login(){
 		extract($_POST);

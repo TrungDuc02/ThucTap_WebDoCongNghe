@@ -59,9 +59,9 @@
         <strong>Copyright © <?php echo date('Y') ?>. 
         <!-- <a href=""></a> -->
         </strong>
-        All rights reserved.
+        Đã đăng ký Bản quyền.
         <div class="float-right d-none d-sm-inline-block">
-          <b><?php echo $_settings->info('short_name') ?> (by: <a href="mailto:oretnom23@gmail.com" target="blank">oretnom23</a> )</b> v1.0
+          <b><?php echo $_settings->info('short_name') ?> (by: <a href="mailto:oretnom23@gmail.com" target="blank">Le Trung Duc</a> )</b> - DH10C6
         </div>
       </footer>
     </div>

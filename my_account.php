@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="w-100 justify-content-between d-flex">
                     <h4><b>Đơn đặt hàng</b></h4>
-                    <a href="./?p=edit_account" class="btn btn btn-default btn-flat bg-maroon"><div class="fa fa-user-cog"></div> Quản lý tài khoản</a>
+                    <a href="./?p=edit_account" class="btn btn btn-default btn-flat bg-cyan"><div class="fa fa-user-cog"></div> Quản lý tài khoản</a>
                 </div>
                     <hr class="border-warning">
                     <table class="table table-stripped text-dark">
@@ -33,7 +33,7 @@
                             ?>
                                 <tr>
                                     <td><?php echo $i++ ?></td>
-                                    <td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+                                    <td><?php echo date("H:i d-m-Y ",strtotime($row['date_created'])) ?></td>
                                     <td><a href="javascript:void(0)" class="view_order" data-id="<?php echo $row['id'] ?>"><?php echo md5($row['id']); ?></a></td>
                                     <td><?php echo number_format($row['amount']) ?> </td>
                                     <td class="text-center">

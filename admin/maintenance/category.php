@@ -41,7 +41,7 @@
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+							<td><?php echo date("H:i d-m-Y ",strtotime($row['date_created'])) ?></td>
 							<td><?php echo $row['category'] ?></td>
 							<td ><p class="truncate-1 m-0"><?php echo $row['description'] ?></p></td>
 							<td class="text-center">
