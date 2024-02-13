@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">   
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css">
 <style>
     .carousel-item>img{
         object-fit:fill !important;
@@ -72,6 +74,9 @@ $brands = isset($_GET['b']) ? json_decode(urldecode($_GET['b'])) : array();
                         </div>
                 </div>
             </div>
+
+            <div class="sanphamnoibat">Sản phẩm nổi bật</div> <hr>
+
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-4 row-cols-md-3 row-cols-xl-4 ">
                     <?php 
@@ -121,6 +126,29 @@ $brands = isset($_GET['b']) ? json_decode(urldecode($_GET['b'])) : array();
         </div>
     </div>
     </div>
+
+    <hr>
+
+    <div class="overlay">
+  <div class="container">
+    <img src="./uploads/1704134460_bannershop.png" alt="Thông báo" class="notification-image centered-image">
+    <span class="close-btn">&times;</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </section>
 <script>
     function _filter(){
@@ -162,4 +190,53 @@ $brands = isset($_GET['b']) ? json_decode(urldecode($_GET['b'])) : array();
         })
     })
 
+
+
+    window.addEventListener('DOMContentLoaded', function() {
+  var overlay = document.querySelector('.overlay');
+  var closeBtn = document.querySelector('.close-btn');
+
+  overlay.style.display = 'block';
+  closeBtn.addEventListener('click', function() {
+    overlay.style.display = 'none';
+  });
+});
 </script>
+<style>
+
+.sanphamnoibat{
+    margin-top:10px;
+    font-size:30px;
+    text-align:center;
+    color:red;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  text-align: center;
+ 
+}
+
+.notification-image {
+  width: 900px;
+  height: auto;
+  display: block;
+  margin: 100px auto;
+  margin-top:250px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color :white;
+}
+</style>

@@ -42,7 +42,7 @@ function isMobileDevice(){
             return true;
         }
     }
-    //Otherwise return false..  
+    //Otherwise return false.. ..
     return false;
 }
 ob_end_flush();

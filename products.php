@@ -116,7 +116,7 @@ elseif(isset($_GET['s'])){
                     <?php endwhile; ?>
                     <?php 
                         if($products->num_rows <= 0){
-                            // echo "<h4 class='text-center'><b>Không có sản phẩm nào được liệt kê.</b></h4>";
+                            // echo "<h4 class='text-center'><b>Không có sản phẩm nào được liệt kê.</b></h4>"; //echo
                             echo "<h4 class='text-center' style='display: inline; white-space: nowrap;'><b>Không có sản phẩm nào được liệt kê.</b></h4>";
                           
                         }
