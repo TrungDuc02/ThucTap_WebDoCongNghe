@@ -131,7 +131,10 @@ $brands = isset($_GET['b']) ? json_decode(urldecode($_GET['b'])) : array();
 
     <div class="overlay">
   <div class="container">
-    <img src="./uploads/1704134460_bannershop.png" alt="Thông báo" class="notification-image centered-image">
+    <?php
+    $imagePath = './uploads/1704134460_bannershop.png'; // Đường dẫn của tệp ảnh đã tải lên
+    ?>
+    <img src="<?php echo $imagePath; ?>" alt="Thông báo" class="notification-image">
     <span class="close-btn">&times;</span>
   </div>
 </div>
@@ -191,16 +194,22 @@ $brands = isset($_GET['b']) ? json_decode(urldecode($_GET['b'])) : array();
     })
 
 
-
-    window.addEventListener('DOMContentLoaded', function() {
+//thong bao banner
+window.addEventListener('DOMContentLoaded', function() {
   var overlay = document.querySelector('.overlay');
   var closeBtn = document.querySelector('.close-btn');
 
-  overlay.style.display = 'block';
+  setTimeout(function() {
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }, 10000);
+
   closeBtn.addEventListener('click', function() {
     overlay.style.display = 'none';
+    document.body.style.overflow = 'auto';
   });
 });
+
 </script>
 <style>
 

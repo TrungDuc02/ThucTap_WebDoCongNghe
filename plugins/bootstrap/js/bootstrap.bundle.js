@@ -59,6 +59,7 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
+  /*db
   /**
    * ------------------------------------------------------------------------
    * Private TransitionEnd Helpers

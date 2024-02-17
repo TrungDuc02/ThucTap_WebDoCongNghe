@@ -4,7 +4,7 @@
 <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-              <span class="info-box-icon bg-maroon elevation-1"><i class="fas fa-mobile-alt"></i></span>
+              <span class="info-box-icon bg-maroon elevation-1"><i class="bi bi-laptop"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Số lượng sản phẩm</span>
                 <span class="info-box-number">
@@ -23,7 +23,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-th-list"></i></span>
+              <span class="info-box-icon bg-purple elevation-1"><i class="bi bi-hourglass-split"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Đơn hàng chờ xử lý</span>  <!-----Pending Orders------->
@@ -42,13 +42,13 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-pink elevation-1"><i class="fa fa-list-ol"></i></span>
+              <span class="info-box-icon bg-pink elevation-1"><i class="bi bi-cart-check"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Tổng số đơn hàng đã bán</span>  <!-----Pending Orders------->
                 <span class="info-box-number">
                 <?php 
-                  $orders_sold = $conn->query("SELECT COUNT(*) as total FROM `orders` WHERE paid = 1")->fetch_assoc()['total'];
+                  $orders_sold = $conn->query("SELECT COUNT(*) as total FROM `orders` WHERE status = 3")->fetch_assoc()['total'];
                      echo number_format($orders_sold);
                     ?>
                 </span>
@@ -60,7 +60,7 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-black elevation-1"><i class="fa fa-list-ol"></i></span>
+              <span class="info-box-icon bg-black elevation-1"><i class="fa fa-address-card"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Tổng số tài khoản khách hàng</span>  <!-----Pending Orders------->
@@ -96,7 +96,7 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-blue elevation-1"><i class="fa fa-list-ol"></i></span>
+              <span class="info-box-icon bg-blue elevation-1"><i class="bi bi-bag-plus-fill"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Số lượng sản phẩm nhập hôm nay</span>  <!-----Pending Orders------->
@@ -115,7 +115,7 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-yellow elevation-1"><i class="fa fa-list-ol"></i></span>
+              <span class="info-box-icon bg-yellow elevation-1"><i class="bi bi-truck"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Đơn hàng đã bán hôm nay</span>  <!-----Pending Orders------->
@@ -136,7 +136,7 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="bi bi-cash-coin"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Tổng doanh số hôm nay</span>
